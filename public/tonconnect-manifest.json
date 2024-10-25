@@ -1,5 +1,5 @@
 {
-  "url": "http://localhost:5173",
-  "name": "Your App Name",
-  "iconUrl": "https://placekitten.com/16/16"
+  "url": "https://rustho.github.io/tonsTest/",
+  "name": "Demo Dapp with React UI",
+  "iconUrl": "https://rustho.github.io/tonsTest/vite.svg"
 }
