@@ -1,27 +1,27 @@
 import React, { useState } from "react";
 import {
   TonConnectButton,
-  TonConnectUI,
-  useTonAddress,
+  // TonConnectUI,
+  // useTonAddress,
   useTonWallet,
-  TonConnect,
+  // TonConnect,
 } from "@tonconnect/ui-react";
-import { Tonstakers as TonstakersSDK } from "tonstakers-sdk";
+// import { Tonstakers as TonstakersSDK } from "tonstakers-sdk";
 
 const StakingComponent: React.FC = () => {
   const [isStaked, setIsStaked] = useState(false);
-  const userFriendlyAddress = useTonAddress();
+  // const userFriendlyAddress = useTonAddress();
   const wallet = useTonWallet();
-  const connector = new TonConnect({
-    manifestUrl: "https://tonstakers.com/dapp/tonconnect-manifest.json",
-  });
-  const tonConnectUI = new TonConnectUI({ connector });
+  // const connector = new TonConnect({
+  //   manifestUrl: "https://tonstakers.com/dapp/tonconnect-manifest.json",
+  // });
+  // const tonConnectUI = new TonConnectUI({ connector });
 
   //   const { Tonstakers } = TonstakersSDK;
-  const tonstakers = new Tonstakers({
-    connector,
-    partnerCode: 123456,
-  });
+  // const tonstakers = new Tonstakers({
+  //   connector,
+  //   partnerCode: 123456,
+  // });
 
   const handleStake = async () => {
     if (!wallet) {
