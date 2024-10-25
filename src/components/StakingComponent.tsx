@@ -1,27 +1,16 @@
 import React, { useState } from "react";
 import {
   TonConnectButton,
-  // TonConnectUI,
-  // useTonAddress,
   useTonWallet,
-  // TonConnect,
+  TonConnect,
+  Wallet,
 } from "@tonconnect/ui-react";
-// import { Tonstakers as TonstakersSDK } from "tonstakers-sdk";
+import { Tonstakers } from "tonstakers-sdk";
 
 const StakingComponent: React.FC = () => {
   const [isStaked, setIsStaked] = useState(false);
-  // const userFriendlyAddress = useTonAddress();
+  const [stakeAmount, setStakeAmount] = useState("10"); // Default stake amount
   const wallet = useTonWallet();
-  // const connector = new TonConnect({
-  //   manifestUrl: "https://tonstakers.com/dapp/tonconnect-manifest.json",
-  // });
-  // const tonConnectUI = new TonConnectUI({ connector });
-
-  //   const { Tonstakers } = TonstakersSDK;
-  // const tonstakers = new Tonstakers({
-  //   connector,
-  //   partnerCode: 123456,
-  // });
 
   const handleStake = async () => {
     if (!wallet) {
@@ -30,17 +19,18 @@ const StakingComponent: React.FC = () => {
     }
 
     try {
-      //   // Initialize TonStakers SDK
-      //   const tonstakers = new Tonstakers({
-      //     connector: wallet.connector, // Assuming 'wallet.connector' is the correct value
-      //     // Add other necessary configuration options if needed
-      //   });
+      const connector = new TonConnect({
+        manifestUrl: "https://rustho.github.io/tonsTest/",
+      }) as unknown as any;
+      const tonstakers = new Tonstakers({
+        connector,
+        partnerCode: 123456,
+      });
 
-      //   // Perform staking operation
-      //   // Note: This is a placeholder. You'll need to replace this with the actual staking method from the Tonstakers SDK
-      //   await tonstakers.stake(userFriendlyAddress, "10"); // Stake 10 TON for example
+      await tonstakers.stake(Number(stakeAmount));
 
       setIsStaked(true);
+      alert("Staking successful!");
     } catch (error) {
       console.error("Error staking:", error);
       alert("Failed to stake. Please try again.");
@@ -51,9 +41,17 @@ const StakingComponent: React.FC = () => {
     <div>
       <TonConnectButton />
       {wallet && (
-        <button onClick={handleStake} disabled={isStaked}>
-          {isStaked ? "Staked" : "Stake TON"}
-        </button>
+        <div>
+          <input
+            type="number"
+            value={stakeAmount}
+            onChange={(e) => setStakeAmount(e.target.value)}
+            placeholder="Amount to stake"
+          />
+          <button onClick={handleStake} disabled={isStaked}>
+            {isStaked ? "Staked" : "Stake TON"}
+          </button>
+        </div>
       )}
     </div>
   );
