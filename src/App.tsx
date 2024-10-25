@@ -1,5 +1,6 @@
 import {
   TonConnectButton,
+  TonConnectUIProvider,
   useTonAddress,
   useTonConnectUI,
 } from "@tonconnect/ui-react";
@@ -14,17 +15,19 @@ function App() {
   console.log(tonConnectUI);
 
   return (
-    <div className="App">
-      <h1>TON Staking App</h1>
-      <TonConnectButton />
-      {userFriendlyAddress && (
-        <div>
-          <p>Connected Address: {userFriendlyAddress}</p>
-          <StakingComponent />
-        </div>
-      )}
-      <ExchangeRateComponent />
-    </div>
+    <TonConnectUIProvider manifestUrl="https://rustho.github.io/tonsTest/tonconnect-manifest.json">
+      <div className="App">
+        <h1>TON Staking App</h1>
+        <TonConnectButton />
+        {userFriendlyAddress && (
+          <div>
+            <p>Connected Address: {userFriendlyAddress}</p>
+            <StakingComponent />
+          </div>
+        )}
+        <ExchangeRateComponent />
+      </div>
+    </TonConnectUIProvider>
   );
 }
 
