@@ -1,5 +1,5 @@
 import React from "react";
-import { useExchangeRates } from "../hooks/useExchangeRates";
+import { useExchangeRates } from "../model/useExchangeRates";
 
 export const ExchangeRateComponent: React.FC = () => {
   const { tonRate, tsTonRate, loading, error } = useExchangeRates();

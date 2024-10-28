@@ -1,5 +1,5 @@
 import React from "react";
-import { StakingInfoProps } from "./types";
+import { StakingInfoProps } from "../model/types";
 
 export const StakingInfo: React.FC<StakingInfoProps> = ({ data }) => (
   <div>

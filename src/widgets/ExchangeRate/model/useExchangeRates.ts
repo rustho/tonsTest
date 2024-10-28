@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { fetchTonRate, fetchTsTonRate } from "../api/exchangeRateApi";
+import { fetchTonRate, fetchTsTonRate } from "./exchangeRateApi";
 
 export const useExchangeRates = () => {
   const [tonRate, setTonRate] = useState<number | null>(null);

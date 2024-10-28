@@ -1,6 +1,6 @@
 import { TonConnectButton, useTonAddress } from "@tonconnect/ui-react";
-import { StakingComponent } from "./components/StakingComponent";
-import { ExchangeRateComponent } from "./components/ExchangeRateComponent";
+import { StakingComponent } from "./widgets/Staking";
+import { ExchangeRateComponent } from "./widgets/ExchangeRate/ui/ExchangeRateComponent";
 import "./App.css";
 
 function App() {

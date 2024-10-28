@@ -1,50 +1,48 @@
-# React + TypeScript + Vite
+# My React TypeScript App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a simple React application that allows users to authorize a wallet through TON Connect and perform staking operations using the Tonstakers SDK. It also displays the exchange rate of TON to USD and the equivalent value of tsTON in USD.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Authorize wallet through TON Connect
+- (Not implemented) Perform staking operations
+- Display exchange rates for TON and tsTON
 
-## Expanding the ESLint configuration
+## Homepage
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+You can view the demo of this application at [https://rustho.github.io/tonsTest](https://rustho.github.io/tonsTest).
 
-- Configure the top-level `parserOptions` property like this:
+## Installation
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+To install the dependencies, run:
+
+```bash
+npm install
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Scripts
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+This project includes several scripts for development and deployment:
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+- **dev**: Start the development server.
+- **build**: Build the project for production.
+- **lint**: Run ESLint to check for code quality.
+- **preview**: Preview the production build.
+- **predeploy**: Build the project before deploying.
+- **deploy**: Deploy the project to GitHub Pages.
+
+## Dependencies
+
+This project uses the following dependencies:
+
+- `@ton/core`
+- `@ton/ton`
+- `@tonconnect/ui-react`
+- `axios`
+- `react`
+- `react-dom`
+- `tonstakers-sdk`
+
+## License
+
+This project is licensed under the MIT License.

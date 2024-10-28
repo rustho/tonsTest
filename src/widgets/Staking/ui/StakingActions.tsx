@@ -1,5 +1,5 @@
 import React from "react";
-import { StakingActionsProps } from "./types";
+import { StakingActionsProps } from "../model/types";
 
 export const StakingActions: React.FC<StakingActionsProps> = ({
   isStaked,

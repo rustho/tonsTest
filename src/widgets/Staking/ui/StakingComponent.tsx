@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useTonConnectUI, useTonWallet } from "@tonconnect/ui-react";
 import { Tonstakers } from "tonstakers-sdk";
-import { StakingData } from "./types";
+import { StakingData } from "../model/types";
 import { StakingInfo } from "./StakingInfo";
 import { StakingActions } from "./StakingActions";
 import { PoolInfo } from "./PoolInfo";

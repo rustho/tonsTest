@@ -1,5 +1,5 @@
 import React from "react";
-import { PoolInfoProps } from "./types";
+import { PoolInfoProps } from "../model/types";
 
 export const PoolInfo: React.FC<PoolInfoProps> = ({ onRefresh }) => (
   <div>
