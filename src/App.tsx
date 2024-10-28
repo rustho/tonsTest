@@ -14,7 +14,6 @@ function App() {
       <ExchangeRateComponent />
       {userFriendlyAddress && (
         <div>
-          <p>Connected Address: {userFriendlyAddress}</p>
           <StakingComponent />
         </div>
       )}
