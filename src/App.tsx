@@ -12,11 +12,7 @@ function App() {
         <TonConnectButton />
       </div>
       <ExchangeRateComponent />
-      {userFriendlyAddress && (
-        <div>
-          <StakingComponent />
-        </div>
-      )}
+      {userFriendlyAddress && <StakingComponent />}
     </div>
   );
 }
