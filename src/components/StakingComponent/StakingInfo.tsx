@@ -2,7 +2,7 @@ import React from "react";
 import { StakingInfoProps } from "./types";
 
 export const StakingInfo: React.FC<StakingInfoProps> = ({ data }) => (
-  <div id="stakingInfo">
+  <div>
     <h2>Staking Information</h2>
     <p>APY: {data.apy}%</p>
     <p>TVL: {data.tvl} TON</p>

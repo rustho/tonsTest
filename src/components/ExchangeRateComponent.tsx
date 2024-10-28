@@ -1,7 +1,7 @@
 import React from "react";
 import { useExchangeRates } from "../hooks/useExchangeRates";
 
-const ExchangeRateComponent: React.FC = () => {
+export const ExchangeRateComponent: React.FC = () => {
   const { tonRate, tsTonRate, loading, error } = useExchangeRates();
 
   if (loading) return <p>Loading exchange rates...</p>;
@@ -15,5 +15,3 @@ const ExchangeRateComponent: React.FC = () => {
     </div>
   );
 };
-
-export default ExchangeRateComponent;

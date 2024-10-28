@@ -1,21 +1,14 @@
-import {
-  TonConnectButton,
-  useTonAddress,
-  useTonConnectUI,
-} from "@tonconnect/ui-react";
-import StakingComponent from "./components/StakingComponent";
-import ExchangeRateComponent from "./components/ExchangeRateComponent";
+import { TonConnectButton, useTonAddress } from "@tonconnect/ui-react";
+import { StakingComponent } from "./components/StakingComponent";
+import { ExchangeRateComponent } from "./components/ExchangeRateComponent";
 import "./App.css";
 
 function App() {
   const userFriendlyAddress = useTonAddress();
-  const [tonConnectUI] = useTonConnectUI();
-
-  console.log(tonConnectUI);
-
   return (
     <div className="App">
       <h1>TON Staking App</h1>
+      <ExchangeRateComponent />
       <TonConnectButton />
       {userFriendlyAddress && (
         <div>
@@ -23,7 +16,6 @@ function App() {
           <StakingComponent />
         </div>
       )}
-      <ExchangeRateComponent />
     </div>
   );
 }

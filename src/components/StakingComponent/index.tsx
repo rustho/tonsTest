@@ -2,7 +2,6 @@ import React, { useState, useEffect, useCallback } from "react";
 import { useTonConnectUI, useTonWallet } from "@tonconnect/ui-react";
 import { Tonstakers } from "tonstakers-sdk";
 import { StakingData } from "./types";
-import { WalletInfo } from "./WalletInfo";
 import { StakingInfo } from "./StakingInfo";
 import { StakingActions } from "./StakingActions";
 import { PoolInfo } from "./PoolInfo";
@@ -17,24 +16,20 @@ const initialStakingData: StakingData = {
   availableBalance: "",
 };
 
-const StakingComponent: React.FC = () => {
+export const StakingComponent: React.FC = () => {
   const [isStaked, setIsStaked] = useState(false);
   const [stakeAmount, setStakeAmount] = useState("10");
   const [stakingData, setStakingData] =
     useState<StakingData>(initialStakingData);
   const wallet = useTonWallet();
   const [tonConnectUI] = useTonConnectUI();
-
-  const getTonstakersInstance = useCallback(() => {
-    return new Tonstakers({
-      connector: tonConnectUI.connector as unknown as any,
-      partnerCode: 123456,
-    });
-  }, [tonConnectUI]);
+  const tonstakers = new Tonstakers({
+    connector: tonConnectUI.connector as unknown as any,
+    partnerCode: 123456,
+  });
 
   const fetchData = useCallback(async () => {
     try {
-      const tonstakers = getTonstakersInstance();
       tonstakers.addEventListener("initialized", () => {
         console.log("Tonstakers SDK initialized successfully.");
       });
@@ -42,6 +37,7 @@ const StakingComponent: React.FC = () => {
       tonstakers.addEventListener("deinitialized", () => {
         console.log("Tonstakers SDK has been deinitialized.");
       });
+
       const [
         apyValue,
         tvlValue,
@@ -70,11 +66,11 @@ const StakingComponent: React.FC = () => {
     } catch (error) {
       console.error("Error fetching data:", error);
     }
-  }, [getTonstakersInstance]);
+  }, []);
 
   useEffect(() => {
     fetchData();
-  }, [fetchData]);
+  }, []);
 
   const handleStake = async () => {
     if (!wallet) {
@@ -83,7 +79,6 @@ const StakingComponent: React.FC = () => {
     }
 
     try {
-      const tonstakers = getTonstakersInstance();
       await tonstakers.stake(Number(stakeAmount));
       setIsStaked(true);
       alert("Staking successful!");
@@ -96,19 +91,18 @@ const StakingComponent: React.FC = () => {
 
   return (
     <div>
-      <WalletInfo wallet={wallet} />
-      <StakingInfo data={stakingData} />
-      <StakingActions
-        isStaked={isStaked}
-        stakeAmount={stakeAmount}
-        setStakeAmount={setStakeAmount}
-        handleStake={handleStake}
-        availableBalance={stakingData.availableBalance}
-        stakedBalance={stakingData.stakedBalance}
-      />
-      <PoolInfo onRefresh={fetchData} />
+      <div>
+        <StakingInfo data={stakingData} />
+        <StakingActions
+          isStaked={isStaked}
+          stakeAmount={stakeAmount}
+          setStakeAmount={setStakeAmount}
+          handleStake={handleStake}
+          availableBalance={stakingData.availableBalance}
+          stakedBalance={stakingData.stakedBalance}
+        />
+        <PoolInfo onRefresh={fetchData} />
+      </div>
     </div>
   );
 };
-
-export default StakingComponent;

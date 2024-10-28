@@ -9,7 +9,7 @@ export const StakingActions: React.FC<StakingActionsProps> = ({
   availableBalance,
   stakedBalance,
 }) => (
-  <div id="stakingActions">
+  <div>
     <h2>Staking Actions</h2>
     <p>Staked Balance: {stakedBalance} tsTON</p>
     <p>Available Balance: {availableBalance} TON</p>
@@ -19,9 +19,13 @@ export const StakingActions: React.FC<StakingActionsProps> = ({
       onChange={(e) => setStakeAmount(e.target.value)}
       placeholder="Amount to stake"
     />
-    <button onClick={handleStake} disabled={isStaked}>
-      {isStaked ? "Staked" : "Stake TON"}
-    </button>
-    <button onClick={() => setStakeAmount(availableBalance)}>Stake Max</button>
+    <div>
+      <button onClick={handleStake} disabled={isStaked}>
+        {isStaked ? "Staked" : "Stake TON"}
+      </button>
+      <button onClick={() => setStakeAmount(availableBalance)}>
+        Stake Max
+      </button>
+    </div>
   </div>
 );
