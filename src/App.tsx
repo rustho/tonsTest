@@ -8,8 +8,10 @@ function App() {
   return (
     <div className="App">
       <h1>TON Staking App</h1>
+      <div style={{ position: "absolute", top: "20px", right: "20px" }}>
+        <TonConnectButton />
+      </div>
       <ExchangeRateComponent />
-      <TonConnectButton />
       {userFriendlyAddress && (
         <div>
           <p>Connected Address: {userFriendlyAddress}</p>
